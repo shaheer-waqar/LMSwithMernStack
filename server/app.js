@@ -1,7 +1,8 @@
 import "dotenv/config"
 import express from "express"
 import cors from "cors"
-import DbConnection from "./config/db.connection.js";
+import userRouter from "./routes/user.route.js"
+import { DbConnection } from "./config/db.connection.js";
 
 
 const app = express();
@@ -23,6 +24,10 @@ app.get("/", (req, res) => {
   });
 });
 
+
+//apis
+
+app.use("/api/auth/",userRouter);
 
 
 app.listen(PORT,()=>{
